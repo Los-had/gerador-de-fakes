@@ -31,6 +31,7 @@ def ver_dados():
     print(f'Erro! Código do erro : {Error.code}')
   finally:
     conn.close()
+    menu()
 def gerar_dados():
   try:
     email = ''
@@ -60,6 +61,7 @@ def gerar_dados():
       print(f'Erro! Código do erro : {Error.code}')
     finally:
       conn.close()
+      menu()
   except KeyboardInterrupt:
     menu()
 def menu():
