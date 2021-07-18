@@ -3,6 +3,7 @@ import names
 import string
 import sqlite3
 from sqlite3 import Error
+import sys
 
 try:
   conn = sqlite3.connect("dados.db")
@@ -40,10 +41,11 @@ def gerar_dados():
     alfabeto += '!@#$%¨&*()_+`{}^?><,./~´[]=-§ªº°¹²³£¢¬|'
     servicos_de_email = ['@gmail.com', '@hotmail.com', '@outlook.com']
     escolha_de_servico_de_email = choice(servicos_de_email)
+    nome = names.get_full_name()
     for i in range(10):
       email += choice(alfabeto)
+    email += f'-{nome}'
     email += escolha_de_servico_de_email
-    nome = names.get_full_name()
     idade = randint(1, 100)
     print(f'''
     Nome: {nome}
@@ -79,7 +81,7 @@ def menu():
     elif escolha == "3":
       ver_dados()
     elif escolha == "2":
-      exit()
+      sys.exit()
     else:
       print(f'"{escolha}" é inválido.')
       menu()
